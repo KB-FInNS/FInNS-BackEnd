@@ -1,5 +1,6 @@
 package com.finns.finance.service;
 
+import com.finns.finance.dto.Finance;
 import com.finns.finance.dto.FinanceDTO;
 import com.finns.finance.mapper.FinanceMapper;
 import lombok.RequiredArgsConstructor;
@@ -9,8 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -31,6 +30,7 @@ public class FinanceService {
     }
 
     // 금융상품 한개 검색
+    public FinanceDTO getinstallList(Long no) {return financeMapper.selectOneProduct(no);}
 
     // 금융상품 로고 url 검색
 }

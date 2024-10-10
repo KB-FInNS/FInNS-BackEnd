@@ -13,9 +13,7 @@ public interface FinanceMapper {
     // 적금 상품을 가져오는 메서드
     List<FinanceDTO> getinstallProducts();
 
-//    // 금융상품 한개 검색
-//    Finance selectOne(Long no);
-//
-//    // 금융상품 은행 로고 url 검색
-//    String selectOneLogo(String korCoNm);
+    // 금융상품 한개 검색
+    FinanceDTO selectOneProduct(Long no);
+
 }

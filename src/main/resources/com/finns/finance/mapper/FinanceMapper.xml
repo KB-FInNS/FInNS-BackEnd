@@ -7,29 +7,38 @@
 
     <!-- 예금 상품 리스트 조회 -->
     <select id="getDepositProducts" resultType="com.finns.finance.dto.FinanceDTO">
-        SELECT finance_product_no, kor_co_nm, finance_product_type, fin_prdt_nm,
-               intr_rate2, intr_rate, join_member, join_way, save_trm,
-               intr_rate_type_nm, spcl_cnd, mtrt_int
-        FROM finance_product
-        WHERE finance_product_type = '01'
+        SELECT fp.finance_product_no, fp.kor_co_nm, fc.img_url, fp.finance_product_type,
+               fp.fin_prdt_nm, fp.intr_rate2, fp.intr_rate, fp.join_member,
+               fp.join_way, fp.save_trm, fp.intr_rate_type_nm, fp.spcl_cnd,
+               fp.mtrt_int
+        FROM finance_product fp
+        JOIN finance_company fc
+          ON fp.kor_co_nm = fc.kor_co_nm
+        WHERE fp.finance_product_type = '01';
     </select>
 
     <!-- 적금 상품 리스트 조회 -->
     <select id="getinstallProducts" resultType="com.finns.finance.dto.FinanceDTO">
-        SELECT finance_product_no, kor_co_nm, finance_product_type, fin_prdt_nm,
-               intr_rate2, intr_rate, join_member, join_way, save_trm,
-               intr_rate_type_nm, spcl_cnd, mtrt_int
-        FROM finance_product
-        WHERE finance_product_type = '02'
+        SELECT fp.finance_product_no, fp.kor_co_nm, fc.img_url, fp.finance_product_type,
+               fp.fin_prdt_nm, fp.intr_rate2, fp.intr_rate, fp.join_member,
+               fp.join_way, fp.save_trm, fp.intr_rate_type_nm, fp.spcl_cnd,
+               fp.mtrt_int
+        FROM finance_product fp
+                 JOIN finance_company fc
+                      ON fp.kor_co_nm = fc.kor_co_nm
+        WHERE fp.finance_product_type = '02';
     </select>
 
     <!-- 특정 금융 상품 조회 -->
-<!--    <select id="SecurityConfig" resultType="com.finns.finance.dto.FinanceDTO">-->
-<!--        SELECT finance_product_no, kor_co_nm, finance_product_type, fin_prdt_nm,-->
-<!--               intr_rate2, intr_rate, join_member, join_way, save_trm,-->
-<!--               intr_rate_type_nm, spcl_cnd, mtrt_int-->
-<!--        FROM finance_product-->
-<!--        WHERE finance_product_no = #{financeProductNo}-->
-<!--    </select>-->
+    <select id="selectOneProduct" resultType="com.finns.finance.dto.FinanceDTO">
+        SELECT fp.finance_product_no, fp.kor_co_nm, fc.img_url, fp.finance_product_type,
+               fp.fin_prdt_nm, fp.intr_rate2, fp.intr_rate, fp.join_member,
+               fp.join_way, fp.save_trm, fp.intr_rate_type_nm, fp.spcl_cnd,
+               fp.mtrt_int
+        FROM finance_product fp
+                 JOIN finance_company fc
+                      ON fp.kor_co_nm = fc.kor_co_nm
+        WHERE finance_product_no = #{financeProductNo}
+    </select>
 
 </mapper>
